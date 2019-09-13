@@ -1,0 +1,42 @@
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<style>
+			.box {
+			    width:300px;
+			    height:300px;
+			    overflow-y:hidden;
+			    background:#eee;
+			    border:1px #ccc solid;
+			    overflow:hidden;
+			}
+			.box p {
+			    margin:1em;
+			}
+		</style>
+		<script>
+			$(document).ready(function() 
+			{
+			    $(".box").mousemove(function(e){
+			        var h = $('#innerbox').height()+13;
+			        var offset = $($(this)).offset();
+			        var position = (e.pageY-offset.top)/$(this).height();
+			        $(".status").html('Percentage:' + ((e.pageY-offset.top)/$(this).height()).toFixed(2));
+			        if(position<0.33) $(this).stop().animate({ scrollTop: 0 }, 5000);
+			        else if(position>0.66) $(this).stop().animate({ scrollTop: h }, 5000);
+			        else $(this).stop();
+			    });
+			});
+		</script>
+		<div class="box">
+		    <div id="innerbox" style="height:auto;">
+			    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor volutpat elementum. Nunc enim enim, eleifend sit amet blandit a, vestibulum a purus. Phasellus at accumsan ante. Duis vestibulum rhoncus sapien a dapibus. Suspendisse malesuada aliquet faucibus. Vestibulum ut sem diam. Integer tempus pellentesque mi, et luctus nunc porttitor in. Nunc vel risus in mauris facilisis commodo.</p>
+			    
+			    <p>Etiam gravida accumsan tortor, vitae malesuada est volutpat at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Nunc mattis dapibus odio nec bibendum. Aliquam id lorem tellus, eget venenatis tellus. Aliquam quis eros arcu. Nam massa dui, scelerisque eu tempor a, faucibus ac ligula. Praesent gravida tempus magna, eu hendrerit nibh placerat tincidunt. Nulla eleifend semper ligula. Nulla vitae adipiscing orci.</p>
+			    
+			    <p>Pellentesque eu lorem vitae leo congue egestas eu et risus. Praesent laoreet odio eget urna bibendum id pharetra dolor placerat. Mauris molestie venenatis est. Nunc eu dictum risus. Morbi sodales laoreet dapibus. Duis euismod condimentum massa, fringilla sodales mauris feugiat sed. In in iaculis diam.</p>
+			    
+			    <p>Donec velit magna, dignissim ac lobortis pharetra, laoreet a quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec vitae quam ante. Fusce mi sapien, suscipit sed feugiat non, suscipit hendrerit neque. Maecenas elementum vestibulum bibendum. Curabitur nisl mauris, posuere cursus vestibulum sit amet, suscipit ac ligula. Nulla dolor tortor, lacinia vel mattis et, egestas tristique augue. Quisque at nibh tortor.</p>
+			    
+			    <p>In hac habitasse platea dictumst. Donec ullamcorper nisl sed leo porta euismod. Maecenas gravida scelerisque lobortis. In hac habitasse platea dictumst. Cras iaculis, justo vel aliquet faucibus, odio leo sollicitudin tellus, a sodales odio purus nec felis. In massa orci, euismod nec gravida vitae, pulvinar sit amet nulla. Integer in lorem lectus, eget dignissim ante.</p>
+			</div>
+		</div>
+		<div class="status"></div><br>

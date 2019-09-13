@@ -1,0 +1,43 @@
+<!--use jquery-->
+<script src="js/jquery-2.1.4.min.js"></script>
+
+<script>
+
+function fncStringConvertToDate(date) {
+    if (typeof date === "string") {
+        date = date.replace(/\/Date\((.*)\)\//, "$1");
+        date = $.isNumeric(date) ? parseInt(date, 10) : $.trim(date);
+    }
+    return new Date(date);
+}
+
+function fncGetGenID(t) { // varargs
+    if ($.isNumeric(t)) {
+        t = new Date(t);
+    }
+
+    var hour = t.getHours();
+    var minu = t.getMinutes();
+    if (arguments.length >= 2) {
+        hour = (Math.floor(t.getHours() / arguments[1]) * arguments[1]);
+    }
+    return (new Date(t.getFullYear(), t.getMonth(), t.getDate(), hour,minu)).getTime();
+
+}
+
+
+document.write((new Date("2011/11/30 14:34:13")).valueOf());
+document.write("<br/>");
+document.write((new Date("2011/11/30 09:50:13")).valueOf());
+
+
+document.write("<br/>");
+document.write(fncStringConvertToDate("1322608320000"));
+document.write("<br/>");
+document.write(fncStringConvertToDate("1322817743000"));
+
+document.write("<br/>");
+document.write(fncGetGenID(new Date("2011/11/30 08:12:13")));
+
+
+</script>

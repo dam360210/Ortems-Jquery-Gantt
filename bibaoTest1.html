@@ -1,0 +1,19 @@
+<script>
+var name = "The Window";
+
+var object = {
+
+	name : "My Object",
+
+	getNameFunc : function(){
+				return name;
+//					return function(){
+//							return this.name;
+//					};
+				}
+};
+
+
+//document.write(object.getNameFunc()());
+document.write(object.getNameFunc());
+</script>
